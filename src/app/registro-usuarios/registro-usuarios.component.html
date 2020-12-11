@@ -1,0 +1,64 @@
+  <div class="wrapper fadeInDown" style="background-color: #56baed;">
+  <div id="formContent" >
+    <!-- Tabs Titles -->
+    <a *ngIf="formtype == 1" href="/CampusBici/login"><h2 class="inactive underlineHover"> Iniciar Sesion </h2></a>
+    <a *ngIf="formtype == 2" href="/EcoEmpresa/login"><h2 class="inactive underlineHover"> Iniciar Sesion </h2></a>
+    <a *ngIf="formtype == 3" href="/BiciUsuario/login"><h2 class="inactive underlineHover"> Iniciar Sesion </h2></a>
+
+    <a  routerLink="/register"><h2 class="active"> Registrarse </h2></a>
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://i.ibb.co/tmS4f9K/Whats-App-Image-2020-09-11-at-8-37-16-PM-1.jpg" id="icon" alt="User Icon"/>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="registerForm">
+
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Empresa" formControlName="fullName">
+
+      <div *ngIf="formtype != 2 ">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Apellidos" formControlName="fullName2">
+        <small *ngIf="registerForm.get('fullName2').errors?.required && registerForm.get('fullName2').touched" class="text-danger"><br>Apellidos requeridos</small>
+      </div>
+
+
+      <div *ngIf="formtype != 2 ">
+        <input  type="email"  class="fadeIn second" name="login" placeholder="Correo" formControlName="email">
+        <small *ngIf="primEmail.errors?.required &&  registerForm.get('email').touched" class="text-danger"><br>Correo es requerido</small>
+    	<small *ngIf="primEmail.errors?.pattern " class="text-danger"><br>Por favor escriba una direccion de correo valida</small>
+      </div>
+
+      <div *ngIf="formtype == 1 ">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Edad" formControlName="edad">
+          <small *ngIf="registerForm.get('edad').errors?.required && registerForm.get('edad').touched" class="text-danger"><br>la edad es requerida</small>
+      </div>
+
+      <div *ngIf="formtype == 2 ">
+        <input type="text" id="login" class="fadeIn second" name="nit" placeholder="NIT" formControlName="nit">
+        <small *ngIf="registerForm.get('nit').errors?.required && registerForm.get('nit').touched" class="text-danger"><br>el NIT es requerido</small>
+        <input type="text" id="login" class="fadeIn second" name="address" placeholder="Direccion" formControlName="address">
+        <small *ngIf="registerForm.get('address').errors?.required && registerForm.get('address').touched" class="text-danger"><br>la direccion es <requerida></requerida></small>
+      </div>
+
+      <input type="password"  class="fadeIn third" name="login" placeholder="Contraseña" formControlName="password1">
+
+
+
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Credit card number" formControlName="fullName">
+          <input type="password"  class="fadeIn third" name="cvv" placeholder="cvv" formControlName="cvv">
+
+
+      <br>
+      <br>
+
+        <input type="submit" class="fadeIn fourth" value="Registrarse" (click)="irALogin()" >
+
+
+
+    </form>
+
+    <!-- Remind Passowrd -->
+
+  </div>
+</div>
